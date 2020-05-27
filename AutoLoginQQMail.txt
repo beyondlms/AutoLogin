@@ -18,6 +18,7 @@ time.sleep(3)
 print("标题为：",driver.title)
 #添加延迟3s
 time.sleep(3)
+#通过网页title实现简单判断
 if driver.title =="QQ邮箱":
     print("登录成功！")
 else:
