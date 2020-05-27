@@ -1,0 +1,28 @@
+#自动登录QQ邮箱
+from selenium import webdriver
+driver = webdriver.Chrome(executable_path="chromedriver.exe")
+#浏览器窗口全屏显示
+driver.maximize_window()
+driver.get("https://mail.qq.com")
+driver.switch_to.frame('login_frame')
+#定位微信登录按钮
+# botton = driver.find_element_by_id("wxLoginTab")
+# botton.click()
+#定位qq登录按钮
+# botton = driver.find_element_by_id("qqLoginTab")
+# botton.click()
+#通过id定位元素
+# phone = driver.find_element_by_id("u")
+# phone.send_keys("邮箱账号")
+# pwd = driver.find_element_by_id("p")
+# pwd.send_keys("密码")
+#通过
+phone = driver.find_element_by_id("u")
+phone.send_keys(1786490384)
+pwd = driver.find_element_by_id("p")
+pwd.send_keys("@@jj520sheng80s")
+#点击确定按钮
+sure = driver.find_element_by_xpath('//*[@id="login_button"]')
+sure.click()
+#退出浏览器，直接退出，太快了
+# driver.quit()
