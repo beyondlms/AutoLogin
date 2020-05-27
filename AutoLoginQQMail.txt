@@ -1,28 +1,26 @@
 #自动登录QQ邮箱
 from selenium import webdriver
+import time
 driver = webdriver.Chrome(executable_path="chromedriver.exe")
 #浏览器窗口全屏显示
 driver.maximize_window()
+# title = driver.title
+#网址
 driver.get("https://mail.qq.com")
 driver.switch_to.frame('login_frame')
-#定位微信登录按钮
-# botton = driver.find_element_by_id("wxLoginTab")
-# botton.click()
-#定位qq登录按钮
-# botton = driver.find_element_by_id("qqLoginTab")
-# botton.click()
 #通过id定位元素
-# phone = driver.find_element_by_id("u")
-# phone.send_keys("邮箱账号")
-# pwd = driver.find_element_by_id("p")
-# pwd.send_keys("密码")
-#通过
-phone = driver.find_element_by_id("u")
-phone.send_keys(1786490384)
-pwd = driver.find_element_by_id("p")
-pwd.send_keys("@@jj520sheng80s")
+driver.find_element_by_id("u").send_keys("账号")
+driver.find_element_by_id("p").send_keys("密码")
 #点击确定按钮
-sure = driver.find_element_by_xpath('//*[@id="login_button"]')
-sure.click()
-#退出浏览器，直接退出，太快了
-# driver.quit()
+driver.find_element_by_xpath('//*[@id="login_button"]').click()
+#添加延迟3s
+time.sleep(3)
+print("标题为：",driver.title)
+#添加延迟3s
+time.sleep(3)
+if driver.title =="QQ邮箱":
+    print("登录成功！")
+else:
+    print("登录失败！")
+#退出浏览器
+driver.quit()
